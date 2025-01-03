@@ -1,0 +1,19 @@
+
+
+
+from pytrends.request import TrendReq
+
+def get_trending_searches(region):
+    try:
+        pytrends = TrendReq()
+        trending = pytrends.trending_searches(pn=region)
+        return trending
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+
+if __name__ == "__main__":
+    region = input("Enter the region (e.g., united_states, india): ").strip().lower()
+    trending = get_trending_searches(region)
+    if trending is not None:
+        print(trending)
